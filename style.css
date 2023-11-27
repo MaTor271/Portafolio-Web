@@ -1,34 +1,195 @@
-$primary: #900;
-$enable-shadows: true;
-$prefix: "mo-";
-.layout {
-  width: 1366px;
-  height: 768px;
+@import url(https://pro.fontawesome.com/releases/v5.11.2/css/all.css);
 
-  display: grid;
-  grid:
-    "Historia" auto
-    "Gustos" 1fr
-    "Habilidades" auto
-    / 1fr;
-  gap: 8px;
+#Machine{
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+#AppWeb{
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.input-group{
+  position:relative;
+}
+.input-group__input{
+  font: inherit;
+  color:#fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  outline: 2px solid #fff;
+  background-color:transparent;
+  transition: outline-color 500ms;
+}
+.input-group__input:is(:focus, :valid){
+  outline-color:#3c50eb
+}
+.input-group__label{
+  position:absolute;
+  top: 0;
+  left: 0;
+  translate: 10px 10px;
+  color: #fff;
+  transition:translate 500ms,
+    scale 500ms;
+}
+.input-group__input:focus + .input-group__label,
+.input-group__input:valid + .input-group__label{
+  padding-inline: 5px;
+  translate: 10px -14px;
+  scale: 0.8;
+  background-color: #4B4B4B;
+}
+.card-gr {
+  max-width: 400 px;
+  display: flex;
+  column-gap: 16 px;
+  padding: 50 px;
+  overflow-x: scroll;
+  ;
+}
+.post{
+  flex: 0 0 250px;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  background-image: linear-gradient(85 deg, #878383, #262626);
+  padding: 32 px;
+  margin-top: 30px;
+  box-shadow: -16px 0 32px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  transition: transform 250ms;
+}
+.post:not(:first-child){
+  margin-left: -130px;
+} 
+.post:hover{
+  transform:translate(-8px, -16px) rotate(3deg);
+}
+.post:hover ~ .post{
+ transform: translateX(130 px)
 }
 
-.Aleluya  { grid-area: Aleluya ; }
-.main { grid-area: main; }
-.footer { grid-area: footer; }
 header{color:white; font-size: 25pt; 
       background-color: darkgrey;
       text-align: center;
-      padding:30 pt; }
+       }
 nav{ display: flex;
    flex-direction: row;
    background-color: antiquewhite;
-    padding: 19 pt 19pt;
+    padding-bottom: 6px;
+    margin-bottom: 12px;
    }
 nav a{color: black;
      padding: 15pt 17pt; 
      text-decoration: none}
 h3{color:whitesmoke; font-size: 25pt; }
-p{color:whitesmoke; font-size: 15pt; }
-LO{color:whitesmoke; font-size: 15pt;} 
+p{color:whitesmoke; font-size: 95%; }
+LO{color:#A42222; font-size: 15pt;} 
+
+
+
+body .options {
+    display: flex;
+    position:absolute;
+    align-items: stretch;
+    overflow: hidden;
+    min-width: 600px;
+    max-width: 900px;
+    width: calc(100% - 100px);
+    height: 400px;
+}
+
+body .options .option {
+  
+    position: relative;
+    overflow: hidden;
+    min-width: 60px;
+    margin: 10px;
+    background: var(--optionBackground, var(--defaultBackground, #DEC2C2));
+    background-size: auto 120%;
+    background-position: center;
+    cursor: pointer;
+    transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+}
+
+.option:nth-child(1) {
+    --defaultBackground: #ed5565;
+}
+.option:nth-child(2) {
+    --defaultBackground: #fc6e51;
+}
+.option:nth-child(3) {
+    --defaultBackground: #ffce54;
+}
+.option:nth-child(4) {
+    --defaultBackground: #2ecc71;
+}
+.option:nth-child(5) {
+    --defaultBackground: #5d9cec;
+}
+.option:nth-child(6) {
+    --defaultBackground: #ac92ec;
+}
+
+.option.active {
+    flex-grow: 10000;
+    transform: scale(1);
+    max-width: 600px;
+    margin: 0px;
+    border-radius: 40px;
+    background-size: auto 100%;
+}
+
+.option.active .label {
+    bottom: 20px;
+    left: 20px;
+}
+.option.active .label .info > div {
+    left: 0px;
+    opacity: 1;
+}
+.option:not(.active) {
+    flex-grow: 1;
+    border-radius: 30px;
+}
+
+.option:not(.active) .label {
+    bottom: 10px;
+    left: 10px;
+}
+.option:not(.active) .label .info > div {
+    left: 20px;
+    opacity: 0;
+}
+.label {
+  
+    display: flex;
+    position: absolute;
+    right: 0px;
+    height: 40px;
+    transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+}
+.icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-width: 40px;
+    max-width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: white;
+    color: var(--defaultBackground);
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   
+    margin-left: 10px;
+    color: #A42222;
+    font-size: 15pt;
+    font-weight: bold;
+}
